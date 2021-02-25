@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout.html}">
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section layout:fragment="content">
+
+		<!-- page content -->
+
+			<div class="right_col" role="main" style="min-height: 4758px;">
+				<div class="">
+					<div class="page-title">
+						<div class="title_left">
+							<h3>
+								<span th:utext="${site}"></span> Active Users, <span th:utext="${pl}"></span> <span> product line</span>
+							</h3>
+						</div>
+						<div class="title_right">
+<!-- 							<div -->
+<!-- 								class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search"> -->
+<!-- 								<div class="input-group"> -->
+<!-- 									<input type="text" class="form-control" -->
+<!-- 										placeholder="Search for..."> <span -->
+<!-- 										class="input-group-btn"> -->
+<!-- 										<button class="btn btn-secondary" type="button">Go!</button> -->
+<!-- 									</span> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+						</div>
+					</div>
+					<div class="clearfix"></div>
+					<div class="row">
+						<div class="col-md-12 col-sm-12 ">
+							<div class="x_panel">
+								<div class="x_title">
+									<h2>
+										Knowlegde KPI <small>Users order by articles, contributions and views </small>
+									</h2>
+									<ul class="nav navbar-right panel_toolbox">
+										<li><a class="collapse-link"><i
+												class="fa fa-chevron-up"></i></a></li>
+										<li><a class="close-link"><i class="fa fa-close"></i></a>
+										</li>
+									</ul>
+									<div class="clearfix"></div>
+								</div>
+								<div class="x_content">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="card-box table-responsive">
+												
+															<table id="dtUsers" class="table table-striped table-bordered dataTable no-footer" style="width: 100%;" role="grid" aria-describedby="datatable_info">
+																<thead>
+																	<tr >
+																		<th></th>
+																		<th>Email</th>
+																		<th>Site</th>
+																		<th>Position</th>
+																		<th>Primary PL</th>
+																		<th>Nbr of views</th>
+																		<th>Nbr of contributions</th>																		
+																		<th>Nbr of news articles</th>
+																	</tr>
+																</thead>
+																<tbody>
+																
+																	<th:block th:each="user, state : ${lstUsers}">
+																		<tr role="row">
+																			<td th:if="${isAdmin == true}"><a th:href="@{'/updateUser?email=' + ${user.email}}"><i class="fa fa-pencil"></i></a></td>
+																			<td th:unless="${isAdmin == true}" th:utext="${state.count}"></td>
+																			<td th:utext="${user.email}"></td>
+																			<td th:utext="${user.site}"></td>
+																			<td th:utext="${user.position}"></td>
+																			<td th:utext="${user.primaryPl}"></td>
+																			<td th:utext="${user.views}"></td>
+																			<td th:utext="${user.contributions}"></td>
+																			<td th:utext="${user.wikis}"></td>
+																		</tr>																	
+																	</th:block>
+
+																</tbody>
+															</table>
+														</div>
+													</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+						
+						
+						
+		
+
+		</div>
+
+
+		<!-- fin page content -->
+		
+	</section>
+</body>
+</html>

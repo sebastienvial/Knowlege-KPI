@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout.html}">
+<head>
+<title>Login</title>
+</head>
+<body>
+
+	<section layout:fragment="content">
+
+		<!-- page content -->
+		<div class="right_col" role="main">
+
+			<div class="col-md-12 ">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>
+							Login ADMIN <small>Knowledge KPI</small>
+						</h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+
+							<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content">
+						<!-- style="display: none;" -->
+						<br>
+
+						<div class="col-md-4">
+
+							<span class="welcome" th:text="${msg}"></span>
+							<div th:if="${param.error}">
+								<p style="font-size: 20; color: #FF1C19;">Email or Password
+									invalid, please verify</p>
+							</div>
+							<div th:if="${param.logout}">You have been logged out.</div>
+							<form th:action="@{/login}" method="post">
+								<div class="form-group">
+									<label for="inputUsername">Email</label> <input type="email"
+										id="email" name="email" th:placeholder="Email"
+										class="form-control" required />
+									<!--<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
+								</div>
+								<div class="form-group">
+									<label for="inputPassword1">Password</label> <input
+										type="password" id="password" name="password"
+										th:placeholder="Password" class="form-control" required />
+								</div>
+								<button type="submit" class="btn btn-primary">Login</button>
+							</form>
+						</div>
+
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</div>
+
+
+
+		<!-- /page content -->
+	</section>
+</body>
+</html>

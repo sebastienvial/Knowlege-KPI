@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+
+    <title>Knowledge KPI</title>
+
+    <!-- Bootstrap -->
+    <link href="../../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="../../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+	
+    <!-- bootstrap-progressbar -->
+    <link href="../../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
+    <!-- JQVMap -->
+    <link href="../../vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
+    <!-- bootstrap-daterangepicker -->
+    <link href="../../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    
+    <!-- Data Table  -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/jquery.dataTables.css">
+  
+    <!-- Custom Theme Style -->
+    <link href="../../build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <p class="site_title"><i class="fa fa-line-chart"></i> <span>Knowledge KPI</span></p>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <!-- <div class="profile clearfix">
+              <div class="profile_pic">
+                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>Sébastien Vial</h2>
+              </div>
+            </div> -->
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <div th:replace="fragments/side :: side">side</div>
+                    
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+          </div>
+        </div>
+        <!-- /top navigation -->
+        
+        <div layout:fragment="content">content</div>
+ 
+        
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Bobst - Knowledge Center
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="../../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../../vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="../../vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="../../vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="../../vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="../../vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="../../vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="../../vendors/Flot/jquery.flot.js"></script>
+    <script src="../../vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="../../vendors/Flot/jquery.flot.time.js"></script>
+    <script src="../../vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="../../vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="../../vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="../../vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="../../vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="../../vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="../../vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="../../vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="../../vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../../vendors/moment/min/moment.min.js"></script>
+    <script src="../../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    
+    
+    
+
+    <!-- Custom Theme Scripts /*<![CDATA[*/   /*]]>*/  -->  
+    <script src="../../build/js/custom.js"></script>   
+    
+    <script th:inline="javascript">
+
+//Bar chart
+
+var dataLastY =   [ "[[${nbrOfLastY01}]]",
+				    "[[${nbrOfLastY02}]]",
+				    "[[${nbrOfLastY03}]]",
+				    "[[${nbrOfLastY04}]]",
+				    "[[${nbrOfLastY05}]]",
+				    "[[${nbrOfLastY06}]]",
+				    "[[${nbrOfLastY07}]]",
+				    "[[${nbrOfLastY08}]]",
+				    "[[${nbrOfLastY09}]]",
+				    "[[${nbrOfLastY10}]]",
+				    "[[${nbrOfLastY11}]]", 
+					"[[${nbrOfLastY12}]]" ];  
+
+var dataThisY =   [ "[[${nbrOfThisY01}]]",
+				    "[[${nbrOfThisY02}]]",
+				    "[[${nbrOfThisY03}]]",
+				    "[[${nbrOfThisY04}]]",
+				    "[[${nbrOfThisY05}]]",
+				    "[[${nbrOfThisY06}]]",
+				    "[[${nbrOfThisY07}]]",
+				    "[[${nbrOfThisY08}]]",
+				    "[[${nbrOfThisY09}]]",
+				    "[[${nbrOfThisY10}]]",
+				    "[[${nbrOfThisY11}]]", 
+					"[[${nbrOfThisY12}]]" ]; 
+
+
+   var dataContributionsLastY =   [ "[[${nbrOfcLastY01}]]",
+					    "[[${nbrOfcLastY02}]]",
+					    "[[${nbrOfcLastY03}]]",
+					    "[[${nbrOfcLastY04}]]",
+					    "[[${nbrOfcLastY05}]]",
+					    "[[${nbrOfcLastY06}]]",
+					    "[[${nbrOfcLastY07}]]",
+					    "[[${nbrOfcLastY08}]]",
+					    "[[${nbrOfcLastY09}]]",
+					    "[[${nbrOfcLastY10}]]",
+					    "[[${nbrOfcLastY11}]]", 
+						"[[${nbrOfcLastY12}]]" ];  
+
+	var dataContributionsThisY =   [ "[[${nbrOfcThisY01}]]",
+					    "[[${nbrOfcThisY02}]]",
+					    "[[${nbrOfcThisY03}]]",
+					    "[[${nbrOfcThisY04}]]",
+					    "[[${nbrOfcThisY05}]]",
+					    "[[${nbrOfcThisY06}]]",
+					    "[[${nbrOfcThisY07}]]",
+					    "[[${nbrOfcThisY08}]]",
+					    "[[${nbrOfcThisY09}]]",
+					    "[[${nbrOfcThisY10}]]",
+					    "[[${nbrOfcThisY11}]]", 
+						"[[${nbrOfcThisY12}]]" ];  
+
+
+	   var dataActiveUsersLastY =   [ "[[${nbrOfUsersaLastY01}]]",
+						    "[[${nbrOfUsersaLastY02}]]",
+						    "[[${nbrOfUsersaLastY03}]]",
+						    "[[${nbrOfUsersaLastY04}]]",
+						    "[[${nbrOfUsersaLastY05}]]",
+						    "[[${nbrOfUsersaLastY06}]]",
+						    "[[${nbrOfUsersaLastY07}]]",
+						    "[[${nbrOfUsersaLastY08}]]",
+						    "[[${nbrOfUsersaLastY09}]]",
+						    "[[${nbrOfUsersaLastY10}]]",
+						    "[[${nbrOfUsersaLastY11}]]", 
+							"[[${nbrOfUsersaLastY12}]]" ];  
+
+		var dataActiveUsersThisY =   [ "[[${nbrOfUsersaThisY01}]]",
+						    "[[${nbrOfUsersaThisY02}]]",
+						    "[[${nbrOfUsersaThisY03}]]",
+						    "[[${nbrOfUsersaThisY04}]]",
+						    "[[${nbrOfUsersaThisY05}]]",
+						    "[[${nbrOfUsersaThisY06}]]",
+						    "[[${nbrOfUsersaThisY07}]]",
+						    "[[${nbrOfUsersaThisY08}]]",
+						    "[[${nbrOfUsersaThisY09}]]",
+						    "[[${nbrOfUsersaThisY10}]]",
+						    "[[${nbrOfUsersaThisY11}]]", 
+							"[[${nbrOfUsersaThisY12}]]" ];  
+
+
+		   var dataContributingUsersLastY =   [ "[[${nbrOfUserscLastY01}]]",
+							    "[[${nbrOfUserscLastY02}]]",
+							    "[[${nbrOfUserscLastY03}]]",
+							    "[[${nbrOfUserscLastY04}]]",
+							    "[[${nbrOfUserscLastY05}]]",
+							    "[[${nbrOfUserscLastY06}]]",
+							    "[[${nbrOfUserscLastY07}]]",
+							    "[[${nbrOfUserscLastY08}]]",
+							    "[[${nbrOfUserscLastY09}]]",
+							    "[[${nbrOfUserscLastY10}]]",
+							    "[[${nbrOfUserscLastY11}]]", 
+								"[[${nbrOfUserscLastY12}]]" ];  
+
+			var dataContributingUsersThisY =   [ "[[${nbrOfUserscThisY01}]]",
+							    "[[${nbrOfUserscThisY02}]]",
+							    "[[${nbrOfUserscThisY03}]]",
+							    "[[${nbrOfUserscThisY04}]]",
+							    "[[${nbrOfUserscThisY05}]]",
+							    "[[${nbrOfUserscThisY06}]]",
+							    "[[${nbrOfUserscThisY07}]]",
+							    "[[${nbrOfUserscThisY08}]]",
+							    "[[${nbrOfUserscThisY09}]]",
+							    "[[${nbrOfUserscThisY10}]]",
+							    "[[${nbrOfUserscThisY11}]]", 
+								"[[${nbrOfUserscThisY12}]]" ];  
+				
+
+
+var ctx = document.getElementById("kpiViewsBarChart"); 
+var mybarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+            label: '2020',
+            backgroundColor: "#B9B9B9",
+            data: dataLastY
+        }, {
+            label: '2021',
+            backgroundColor: "#C3001D",
+            data: dataThisY
+        }]
+    },
+
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx = document.getElementById("kpiContributionsBarChart"); 
+var mybarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+            label: '2020',
+            backgroundColor: "#B9B9B9",
+            data: dataContributionsLastY
+        }, {
+            label: '2021',
+            backgroundColor: "#C3001D",
+            data: dataContributionsThisY
+        }]
+    },
+
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx = document.getElementById("kpiActiveUsersBarChart"); 
+var mybarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+            label: '2020',
+            backgroundColor: "#B9B9B9",
+            data: dataActiveUsersLastY
+        }, {
+            label: '2021',
+            backgroundColor: "#03586A",
+            data: dataActiveUsersThisY
+        }]
+    },
+
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+var ctx = document.getElementById("kpiContributingUsersBarChart"); 
+var mybarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        datasets: [{
+            label: '2020',
+            backgroundColor: "#B9B9B9",
+            data: dataContributingUsersLastY
+        }, {
+            label: '2021',
+            backgroundColor: "#03586A",
+            data: dataContributingUsersThisY
+        }]
+    },
+
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+//Gestion table users
+$(document).ready(function() {
+	$('dtUsers'.DataTable());
+});
+
+
+
+
+
+</script>
+    
+    
+    
+    
+    <script th:inline="javascript">     
+
+     	var arr_data1 = [
+            [gd(2020, 1, 1), /*[[${nbrOfLastY01}]]*/],
+            [gd(2020, 2, 1), /*[[${nbrOfLastY02}]]*/],
+            [gd(2020, 3, 1), /*[[${nbrOfLastY03}]]*/],
+            [gd(2020, 4, 1), /*[[${nbrOfLastY04}]]*/],
+            [gd(2020, 5, 1), /*[[${nbrOfLastY05}]]*/],
+            [gd(2020, 6, 1), /*[[${nbrOfLastY06}]]*/],
+            [gd(2020, 7, 1), /*[[${nbrOfLastY07}]]*/],
+            [gd(2020, 8, 1), /*[[${nbrOfLastY08}]]*/],
+            [gd(2020, 9, 1), /*[[${nbrOfLastY09}]]*/],
+            [gd(2020, 10, 1), /*[[${nbrOfLastY10}]]*/],
+            [gd(2020, 11, 1), /*[[${nbrOfLastY11}]]*/],
+            [gd(2020, 12, 1), /*[[${nbrOfLastY12}]]*/],
+            
+        ];
+    
+     	var arr_data2 = [
+            [gd(2020, 1, 1), /*[[${nbrOfThisY01}]]*/],
+            [gd(2020, 2, 1), /*[[${nbrOfThisY02}]]*/],
+            [gd(2020, 3, 1), /*[[${nbrOfThisY03}]]*/],
+            [gd(2020, 4, 1), /*[[${nbrOfThisY04}]]*/],
+            [gd(2020, 5, 1), /*[[${nbrOfThisY05}]]*/],
+            [gd(2020, 6, 1), /*[[${nbrOfThisY06}]]*/],
+            [gd(2020, 7, 1), /*[[${nbrOfThisY07}]]*/],
+            [gd(2020, 8, 1), /*[[${nbrOfThisY08}]]*/],
+            [gd(2020, 9, 1), /*[[${nbrOfThisY09}]]*/],
+            [gd(2020, 10, 1), /*[[${nbrOfThisY10}]]*/],
+            [gd(2020, 11, 1), /*[[${nbrOfThisY11}]]*/],
+            [gd(2020, 12, 1), /*[[${nbrOfThisY12}]]*/],
+            
+        ];
+     	
+     
+
+	
+     </script>
+    
+    
+    
+    
+    
+    
+	
+  </body>
+</html>

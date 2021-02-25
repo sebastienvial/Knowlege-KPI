@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout.html}">
+<head>
+<title>Insert title here</title>
+</head>
+<body>
+
+	<section layout:fragment="content">
+
+		<!-- page content -->
+		<div class="right_col" role="main">
+
+			<div class="col-md-12 ">
+				<div class="x_panel">
+					<div class="x_title">
+						<h2>
+							Configuration <small>Knowledge KPI</small>
+						</h2>
+						<ul class="nav navbar-right panel_toolbox">
+							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+							</li>
+					
+							<li><a class="close-link"><i class="fa fa-close"></i></a></li>
+						</ul>
+						<div class="clearfix"></div>
+					</div>
+					<div class="x_content" > <!-- style="display: none;" -->
+						<br>
+						<form class="form-horizontal form-label-left" action="#" th:action="@{/saveConfig}" th:object="${conf}" method="Post"> 
+
+							<div class="form-group row">
+								<label class="control-label col-md-1 col-sm-1 ">Period</label>
+								<div class="col-md-3 col-sm-3 ">
+									<select class="form-control" th:field="*{period}">
+										<option value="00">This year</option>
+										<option value="99">Last year</option>
+										<option value="01">January</option>
+										<option value="02">February</option>
+										<option value="03">March</option>
+										<option value="04">April</option>
+										<option value="05">May</option>
+										<option value="06">June</option>
+										<option value="07">July</option>
+										<option value="08">August</option>
+										<option value="09">September</option>
+										<option value="10">October</option>
+										<option value="11">November</option>
+										<option value="12">December</option>
+									</select>
+								</div>
+								<label class="control-label col-md-1 col-sm-1 ">Site</label>
+								<div class="col-md-3 col-sm-3 ">
+									<select class="form-control" th:field="*{site}">
+									
+											<option value="ALL">ALL</option>
+										<optgroup label="BSF Factories">
+											<option value="ASI">ASI</option>
+											<option value="BFL">BFL</option>
+											<option value="BSA">BSA</option>
+											<option value="FKG">FKG</option>
+											<option value="GEN">GEN</option>
+											<option value="ROT">ROT</option>
+											<option value="SAM">SAM</option>
+											<option value="SCH">SCH</option>
+									 	</optgroup>
+									 	<optgroup label="BCC World">
+											<option value="BAM">BAM</option>
+											<option value="BBN">BBN</option>
+											<option value="BBR">BBR</option>
+											<option value="BCL">BCL</option>
+											<option value="BEE">BEE</option>
+											<option value="BES">BES</option>
+											<option value="BFA">BFA</option>
+											<option value="BGL">BGL</option>
+											<option value="BGS">BGS</option>
+											<option value="BGU">BGU</option>
+											<option value="BGV">BGV</option>
+											<option value="BID">BID</option>
+											<option value="BIN">BIN</option>
+											<option value="BIS">BIS</option>
+											<option value="BJL">BJL</option>
+											<option value="BLG">BLG</option>
+											<option value="BLN">BLN</option>
+											<option value="BMA">BMA</option>
+											<option value="BOG">BOG</option>
+											<option value="BPL">BPL</option>
+											<option value="BSL">BSL</option>
+											<option value="BTH">BTH</option>
+											<option value="BVN">BVN</option>
+										</optgroup>
+									</select>
+								</div>
+								<label class="control-label col-md-1 col-sm-1">PL</label>
+								<div class="col-md-3 col-sm-3 ">
+									<select class="form-control" th:field="*{pl}">
+										<option value="ALL">ALL</option>
+										<option value="SF FFG/DRO">SF FFG/DRO</option>										
+										<option value="SF LAM">SF LAM</option>
+										<option value="SF PCR">SF PCR</option>
+										<option value="SF SP/HFS">SF SP/HFS</option>
+										<option value="SP SPO/FLEXO">SP SPO/FLEXO</option>
+										<option value="WF BCH">WF BCH</option>
+										<option value="WF FLEXO">WF FLEXO</option>
+										<option value="WF FM">WF FM</option>
+										<option value="WF G+C&L">WF G+C&L</option>
+										<option value="WF LAB">WF LAB</option>
+										<option value="WF VAC">WF VAC</option>
+									</select>
+								</div>
+							</div>
+
+							<div class="ln_solid"></div>
+							<div class="form-group">
+								<div class="col-md-12 col-sm-12  offset-md-11">
+<!-- 									<button type="reset" class="btn btn-primary">Reset</button> -->
+									<button type="submit" class="btn btn-success">Show</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /page content -->
+	</section>
+</body>
+</html>
