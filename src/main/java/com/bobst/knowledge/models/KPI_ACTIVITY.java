@@ -6,7 +6,7 @@ import javax.persistence.Id;
 @Entity
 public class KPI_ACTIVITY {
 	@Id
-	private String EMAIL;
+	private String EMAIL;	
 	private Integer VIEWS;
 	private Integer CONTRIBUTIONS;
 	private Integer GROUPS;
@@ -73,6 +73,12 @@ public class KPI_ACTIVITY {
 	}
 
 
+	public boolean validate() {
+		return (!EMAIL.isEmpty() && EMAIL.contains("@"));
+		
+	}
+	
+	
 	public String getEMAIL() {
 		return EMAIL;
 	}

@@ -15,7 +15,7 @@
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>
-							Login ADMIN <small>Knowledge KPI</small>
+							ADMIN <small>Knowledge KPI</small>
 						</h2>
 						<ul class="nav navbar-right panel_toolbox">
 							<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -30,13 +30,21 @@
 						<br>
 
 						<div class="col-md-4">
+							<div th:if="${isAdmin == true}">
+							    <a th:href="@{/createUser}" class="btn btn-primary">Create User</a>
+<!-- 							    <button type="button" class="btn btn-primary">Update User</button> -->
+<!-- 							    <button type="button" class="btn btn-primary">Delete User</button> -->
+
+							    <a th:href="@{/createActivity}" class="btn btn-primary">Create Activity</a>
+							</div>
+							<br>
 
 							<span class="welcome" th:text="${msg}"></span>
-							<div th:if="${param.error}">
-								<p style="font-size: 20; color: #FF1C19;">Email or Password
-									invalid, please verify</p>
-							</div>
+							<div class="alert alert-danger" role="alert" th:if="${param.error}">Email or Password invalid, please verify</div>
+							
 							<div th:if="${param.logout}">You have been logged out.</div>
+							
+							<div th:if="${isAdmin == false}">
 							<form th:action="@{/login}" method="post">
 								<div class="form-group">
 									<label for="inputUsername">Email</label> <input type="email"
@@ -51,6 +59,8 @@
 								</div>
 								<button type="submit" class="btn btn-primary">Login</button>
 							</form>
+							</div>
+							
 						</div>
 
 

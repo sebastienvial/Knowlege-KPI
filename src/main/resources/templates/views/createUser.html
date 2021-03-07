@@ -13,10 +13,13 @@
 <div class="right_col" role="main" style="min-height: 4758px;">
 			
 		<div class="col-md-6 ">
+			<div class="alert alert-success" role="alert" th:text="${success}" th:if="${success}"></div>
+			<div class="alert alert-danger" role="alert" th:text="${error}" th:if="${error}"></div>
+			
 			<div class="x_panel">
 				<div class="x_title">
 					<h2>
-						Create or Update a user <small></small>
+						Create a new user <small></small>
 					</h2>
 					<ul class="nav navbar-right panel_toolbox">
 						<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -32,28 +35,25 @@
 						<div class="form-group row ">
 							<label class="control-label col-md-3 col-sm-3 ">Email</label>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control"
-									placeholder="@BOBST.COM" th:field="*{email}">
+								<input type="text" class="form-control" required th:field="*{email}">
 							</div>
 						</div>
 						<div class="form-group row ">
 							<label class="control-label col-md-3 col-sm-3 ">First Name</label>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control"
-									placeholder="Sébastien" th:field="*{firstName}">
+								<input type="text" class="form-control"  required th:field="*{firstName}">
 							</div>
 						</div>
 						<div class="form-group row ">
 							<label class="control-label col-md-3 col-sm-3 ">Last Name</label>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control"
-									placeholder="Vial" th:field="*{lastName}">
+								<input type="text" class="form-control"  required th:field="*{lastName}">
 							</div>
 						</div>
 						<div class="form-group row">
 							<label class="control-label col-md-3 col-sm-3 ">Site</label>
 							<div class="col-md-9 col-sm-9 ">
-								<select class="form-control" th:field="*{locationId}">
+								<select class="form-control" required th:field="*{locationId}">
 									<th:block th:each="site : ${lstSite}">
 										<option th:value="${site}" th:utext="${site}"></option>
 									</th:block>		
@@ -92,9 +92,10 @@
 						<div class="ln_solid"></div>
 						<div class="form-group">
 							<div class="col-md-9 col-sm-9  offset-md-3">
-								<button type="button" class="btn btn-primary">Cancel</button>
-								<button type="reset" class="btn btn-primary">Reset</button>
-								<button type="submit" class="btn btn-success">Submit</button>
+<!-- 								<button type="button" class="btn btn-primary">Cancel</button> -->
+<!-- 								<button type="reset" class="btn btn-primary">Reset</button> -->
+								<button type="submit" class="btn btn-success">Create new user</button>
+								<a th:href="@{/login}" class="btn btn-primary">Back to Admin area</a>
 							</div>
 						</div>
 					</form>

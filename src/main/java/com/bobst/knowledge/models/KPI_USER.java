@@ -1,8 +1,6 @@
 package com.bobst.knowledge.models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
@@ -57,7 +55,7 @@ public class KPI_USER {
 	
 	public boolean validate()
 	{
-		return (!email.isEmpty());
+		return (!email.isEmpty() && email.contains("@") && !firstName.isEmpty() && !lastName.isEmpty());
 	}
 		
 	public String getEmail() {

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bobst.knowledge.models.DataPeriod;
+import com.bobst.knowledge.models.KPI_ACTIVITY;
 import com.bobst.knowledge.models.KPI_USER;
 import com.bobst.knowledge.models.UserFull;
 import com.bobst.knowledge.repository.KpiActivityRepository;
@@ -33,18 +34,7 @@ public class KuserService {
 	
 	@Autowired
 	EntityManagerFactory emf;
-
-	public List<KPI_USER> getAllUsers() {
-		return repUser.findAll();
-	}
 	
-	public List<KPI_USER> getAllActiveUsers() {
-		return repUser.findAllActiveUserGlobal();
-	}
-	
-	public List<KPI_USER> getUsersTest() {
-		return repUser.findUserTest();
-	}
 	
 	public KPI_USER getUserByEmail(String email) {
 		return repUser.findUserByEmail(email);
@@ -56,6 +46,10 @@ public class KuserService {
 	
 	public List<String> getAllPosition() {
 		return repUser.findAllPosition();
+	}
+	
+	public List<String> getAllEmail() {
+		return repUser.findAllEmail();
 	}
 	
 	public List<String> getAllSite() {
@@ -195,7 +189,6 @@ public class KuserService {
 	public Integer getNbrOfNewArticles(String period) {
 		return repActivity.findNbrNewArticles(period);
 	}
-
 	
 	
 	public List<Object[]> getNbrOfYears(String annee, String typeS, String site, String pl) {
@@ -232,7 +225,12 @@ public class KuserService {
 	}
 	
 	
+	public KPI_ACTIVITY getActivityByEmailAndPeriod(String email, String period) {
+		return repActivity.findActivityByEmailAndPeriod(email, period);
+	}
 	
-	
+	public void updateActivity(Integer views, Integer contributions, Integer wikis, Integer kba, String email, String period) {
+		repActivity.updateActivity(views, contributions, wikis, kba, email, period);
+	}
 
 }

@@ -1,0 +1,9 @@
+
+CREATE TABLE KPI_COMPANY (
+    "LOCATION_ID" character varying(4) COLLATE pg_catalog."default",
+    "LOCATION" character varying(50) COLLATE pg_catalog."default",
+    "SITE" character varying(20) COLLATE pg_catalog."default",
+    "GROUP_SITE" character varying(50) COLLATE pg_catalog."default",
+    "REGION" character varying(50) COLLATE pg_catalog."default",
+    "COUNTRY" character varying(50) COLLATE pg_catalog."default" 
+);

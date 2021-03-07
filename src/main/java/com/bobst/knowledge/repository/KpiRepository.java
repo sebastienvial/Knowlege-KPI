@@ -22,10 +22,9 @@ public interface KpiRepository extends JpaRepository<KPI_USER,Integer> {
 	List<KPI_USER> findUserTest();
 	
 	@Query(
-			value = "SELECT * FROM KPI_USER WHERE EMAIL= :email",
+			value = "SELECT * FROM KPI_USER WHERE UPPER(EMAIL) = Upper(:email)",
 			nativeQuery = true)
-	KPI_USER findUserByEmail(@Param("email") String email);
-	
+	KPI_USER findUserByEmail(@Param("email") String email);	
 	
 	
 	@Query(
@@ -53,6 +52,11 @@ public interface KpiRepository extends JpaRepository<KPI_USER,Integer> {
 			value = "SELECT DISTINCT(POSITION) FROM KPI_USER ORDER BY POSITION",
 			nativeQuery = true)
 	List<String> findAllPosition();
+	
+	@Query(
+			value = "SELECT DISTINCT(EMAIL) FROM KPI_USER ORDER BY EMAIL",
+			nativeQuery = true)
+	List<String> findAllEmail();
 	
 	
 	

@@ -44,11 +44,11 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 	{
 		http.authorizeRequests()
 		.antMatchers("/", "/kpi", "/configuration").permitAll()
-		.antMatchers("/createUser", "/updateUser", "/deleteUser").authenticated()
+		.antMatchers("/createUser", "/updateUser", "/deleteUser", "/createActivity", "/updateActivity").authenticated()
 		.and()
 		.formLogin().loginPage("/login").permitAll() 
 		.and()
-		.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/").usernameParameter("email").passwordParameter("password")
+		.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/login").usernameParameter("email").passwordParameter("password")
 		.and() 			
 		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/") 			
 		.and() 
@@ -56,15 +56,5 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter {
 		.and()
 		.exceptionHandling().accessDeniedPage("/403");
 	}
-	
-	
-
-//	.formLogin().loginPage("/login").permitAll()
-//	.and()
-//	.formLogin().loginPage("/login").failureUrl("/login?error=true").defaultSuccessUrl("/").usernameParameter("email").passwordParameter("password")
-//	.and()
-//	.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/")
-//	.and()
-//	.rememberMe();
-	
+			
 }
