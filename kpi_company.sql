@@ -1,20 +1,22 @@
---
--- Fichier généré par SQLiteStudio v3.2.1 sur sam. févr. 27 11:09:39 2021
---
--- Encodage texte utilisé : UTF-8
---
-PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
+-- Table: knowledge.kpi_company
 
--- Table : KPI_COMPANY
-CREATE TABLE "KPI_COMPANY" 
-   (	"LOCATION_ID" VARCHAR2(4), 
-	"LOCATION" VARCHAR2(50), 
-	"SITE" VARCHAR2(20), 
-	"GROUP_SITE" VARCHAR2(50), 
-	"REGION" VARCHAR2(50), 
-	"COUNTRY" VARCHAR2(50)
-   );
+-- DROP TABLE kpi_company;
+
+CREATE TABLE kpi_company
+(
+    location_id character varying(4) COLLATE pg_catalog."default",
+    location character varying(50) COLLATE pg_catalog."default",
+    site character varying(20) COLLATE pg_catalog."default",
+    group_site character varying(50) COLLATE pg_catalog."default",
+    region character varying(50) COLLATE pg_catalog."default",
+    country character varying(50) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE kpi_company
+    OWNER to postgres;
+	
 INSERT INTO KPI_COMPANY (LOCATION_ID, LOCATION, SITE, GROUP_SITE, REGION, COUNTRY) VALUES ('1140', 'ASI Bobst Grenchen AG', 'ASI', 'ASI', '', '');
 INSERT INTO KPI_COMPANY (LOCATION_ID, LOCATION, SITE, GROUP_SITE, REGION, COUNTRY) VALUES ('3010', 'BAM-TN Bobst Af. & M.East', 'BAM', 'BAM', '', '');
 INSERT INTO KPI_COMPANY (LOCATION_ID, LOCATION, SITE, GROUP_SITE, REGION, COUNTRY) VALUES ('1340', 'BBN Bobst Benelux (br.off', 'BBN', 'BOG', '', '');
@@ -50,4 +52,3 @@ INSERT INTO KPI_COMPANY (LOCATION_ID, LOCATION, SITE, GROUP_SITE, REGION, COUNTR
 INSERT INTO KPI_COMPANY (LOCATION_ID, LOCATION, SITE, GROUP_SITE, REGION, COUNTRY) VALUES ('1090', 'SCH Bobst Italia SPA', 'SCH', 'SCH', '', '');
 
 COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;

@@ -1,18 +1,20 @@
---
--- Fichier généré par SQLiteStudio v3.2.1 sur sam. févr. 27 13:47:03 2021
---
--- Encodage texte utilisé : UTF-8
---
-PRAGMA foreign_keys = off;
-BEGIN TRANSACTION;
+-- Table: knowledge.kpi_role
 
--- Table : KPI_ROLE
-CREATE TABLE KPI_ROLE 
-   (	EMAIL character varying(100), 
-	PASSWORD character varying(100), 
-	ROLE character varying(20)
-   );
+-- DROP TABLE kpi_role;
+
+CREATE TABLE knowledge.kpi_role
+(
+    email character varying(100) COLLATE pg_catalog."default",
+    password character varying(100) COLLATE pg_catalog."default",
+    role character varying(20) COLLATE pg_catalog."default"
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE kpi_role
+    OWNER to postgres;
+
+
 INSERT INTO KPI_ROLE (EMAIL, PASSWORD, ROLE) VALUES ('SEBASTIEN.VIAL@BOBST.COM', '$2a$10$zxvEq8XzYEYtNjbkRsJEbukHeRx3XS6MDXHMu8cNuNsRfZJWwswDy', 'ROLE_ADMIN');
 
 COMMIT TRANSACTION;
-PRAGMA foreign_keys = on;
